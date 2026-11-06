@@ -41,6 +41,8 @@ One-time setup, about 10 minutes:
 
 Each signup also emails an alert to the address in `ALERT_TO` at the top of `signups.gs` (Reply goes straight to the person who signed up). Set it to `''` to turn alerts off.
 
+The first time the script sends email, Google asks for permission to "Send email as you". If alerts stop arriving, open Apps Script, run any function from the editor and allow it, then publish a new version.
+
 If you change `signups.gs` later, use Deploy > Manage deployments > Edit (pencil) > Version: New version. A brand-new deployment gets a new URL, and the form would stop saving until config.js is updated.
 
 Until step 5 is done, the form shows "We couldn't save that. Check your connection and try again."

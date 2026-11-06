@@ -1,6 +1,7 @@
 /**
  * Kipwell waitlist: receives signups from the join form on kipwell.co
- * and saves them to the "Signups" tab of the Google Sheet this script is attached to.
+ * and saves them to the "Signups" tab of the Google Sheet this script is attached to,
+ * then emails an alert to ALERT_TO.
  *
  * Setup (see README.md, "Signups"):
  * 1. Make a Google Sheet. Extensions > Apps Script. Replace the starter code with this file. Save.
@@ -14,7 +15,7 @@ var HEADERS = ['Name', 'Studio', 'Email', 'What they teach', 'Agreed to emails',
 var PROGRAMS = ['Gymnastics', 'Dance', 'Swim', 'Cheer', 'Martial arts', 'Something else'];
 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Who gets an email for each signup. Leave empty to turn the alert off.
-var ALERT_TO = 'caseywfrancis@gmail.com';
+var ALERT_TO = 'caseywfrancis+landingpage@gmail.com';
 
 function doPost(e) {
   var data;
