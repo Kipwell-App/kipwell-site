@@ -153,13 +153,16 @@ h1, h2, h3 { margin: 0; }
 .card .label { font-size: 15px; font-weight: 600; color: var(--stone); }
 
 /* Founder */
-.founder { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 56px; align-items: start; border-top: 1px solid var(--line); padding-top: 56px; }
-.founder-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; }
+.founder { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 48px; align-items: start; border-top: 1px solid var(--line); padding-top: 56px; }
 .founder .h2 { font-size: 40px; line-height: 1.1; }
-.founder-text { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
+.founder-text { display: flex; flex-direction: column; gap: 16px; }
 .founder-text p { font-size: 19px; line-height: 1.6; }
 .founder-text a { text-underline-offset: 3px; }
-.founder-text .signature { font-size: 16px; color: var(--stone); }
+.signature { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+.signature img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex: none; }
+.founder-text .signature p { display: flex; flex-direction: column; font-size: 16px; line-height: 1.35; }
+.signature b { font-weight: 600; color: var(--ink); }
+.signature span { color: var(--stone); font-size: 15px; }
 
 /* Join form */
 .join .lede { color: var(--on-dark-2); }
@@ -222,9 +225,14 @@ h1, h2, h3 { margin: 0; }
   .hero .wrap { gap: 40px; padding-top: 32px; padding-bottom: 72px; }
   .split-head { gap: 16px; }
   .skills-text { order: -1; }
-  .phones { grid-template-columns: minmax(0, 260px); }
-  .founder { gap: 28px; }
-  .founder-photo { width: 160px; }
+  /* Phones: a sideways swipe row with the next screen peeking in, instead of a tall stack */
+  .phones-scroll { margin: 0 calc(-1 * var(--gutter)); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .phones-scroll::-webkit-scrollbar { display: none; }
+  .phones-scroll:focus-visible { outline-offset: -2px; }
+  .phones { display: flex; gap: 16px; justify-content: flex-start; padding: 0 var(--gutter) 4px; width: max-content; }
+  .phones li { flex: 0 0 auto; width: min(70vw, 280px); scroll-snap-align: start; }
+  .phones img { border-width: 6px; border-radius: 24px; }
+  .founder { gap: 20px; }
   .panel-plum { padding: 40px 32px; }
 }
 @media (max-width: 720px) {
