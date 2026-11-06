@@ -86,7 +86,13 @@
     // text/plain keeps this a simple request, which Apps Script accepts without a preflight.
     fetch(url, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) })
       .then(function (res) { return res.ok ? res.json() : Promise.reject(new Error("HTTP " + res.status)); })
-      .then(function (data) { if (data && data.ok) showThanks(payload); else fail(); })
+      .then(function (data) {
+        if (data && data.ok) {
+          // Count the signup in Analytics. Only the program is sent, never a name or email.
+          if (window.gtag) window.gtag("event", "generate_lead", { program: payload.program });
+          showThanks(payload);
+        } else fail();
+      })
       .catch(fail);
   });
 
