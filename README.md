@@ -62,3 +62,11 @@ kipwell.co is registered at Porkbun. GitHub's docs say to verify the domain and 
 5. Leave the `notify`, `hello` and future `app` records alone. They're separate subdomains and don't affect the site.
 
 This repo is public, as GitHub Pages requires on a free organization. Keep anything private out of it: the signups live in the Google Sheet, never here.
+
+## Photo credits
+
+Both gym photos are by Brett Wharton on Unsplash (Gym Stars Gymnastics, Boise, ID), used under the Unsplash License:
+- `assets/img/hero-gym-beam.webp`: https://unsplash.com/photos/a-group-of-girls-exercising-M6_W4IpYNEQ
+- `assets/img/coach-low-beam.webp`: https://unsplash.com/photos/a-man-and-a-woman-in-a-gym-cpNh60OW7z0
+
+Product screens come from Kipwell's own demo. The founder photo is Casey's own.
