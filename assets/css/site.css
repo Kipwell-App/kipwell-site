@@ -153,11 +153,13 @@ h1, h2, h3 { margin: 0; }
 .card .label { font-size: 15px; font-weight: 600; color: var(--stone); }
 
 /* Founder */
-.founder { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 48px; border-top: 1px solid var(--line); padding-top: 56px; }
+.founder { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 56px; align-items: start; border-top: 1px solid var(--line); padding-top: 56px; }
+.founder-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; }
 .founder .h2 { font-size: 40px; line-height: 1.1; }
-.founder-text { display: flex; flex-direction: column; gap: 16px; }
-.founder-text p:first-child { font-size: 19px; line-height: 1.6; }
-.founder-text p:last-child { font-size: 16px; color: var(--stone); }
+.founder-text { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
+.founder-text p { font-size: 19px; line-height: 1.6; }
+.founder-text a { text-underline-offset: 3px; }
+.founder-text .signature { font-size: 16px; color: var(--stone); }
 
 /* Join form */
 .join .lede { color: var(--on-dark-2); }
@@ -221,6 +223,8 @@ h1, h2, h3 { margin: 0; }
   .split-head { gap: 16px; }
   .skills-text { order: -1; }
   .phones { grid-template-columns: minmax(0, 260px); }
+  .founder { gap: 28px; }
+  .founder-photo { width: 160px; }
   .panel-plum { padding: 40px 32px; }
 }
 @media (max-width: 720px) {
