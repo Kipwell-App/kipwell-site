@@ -39,6 +39,8 @@ One-time setup, about 10 minutes:
 5. In `assets/js/config.js`, put the URL between the quotes: `window.KIPWELL_SIGNUP_URL = "https://script.google.com/macros/s/.../exec";` and commit.
 6. On the live site, join with kipwell.test@gmail.com. A "Signups" tab appears in the sheet with one row. Join again with the same email in capitals: still one row, with a new Updated time.
 
+Each signup also emails an alert to the address in `ALERT_TO` at the top of `signups.gs` (Reply goes straight to the person who signed up). Set it to `''` to turn alerts off.
+
 If you change `signups.gs` later, use Deploy > Manage deployments > Edit (pencil) > Version: New version. A brand-new deployment gets a new URL, and the form would stop saving until config.js is updated.
 
 Until step 5 is done, the form shows "We couldn't save that. Check your connection and try again."

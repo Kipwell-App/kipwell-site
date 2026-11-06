@@ -13,6 +13,8 @@ var SHEET_NAME = 'Signups';
 var HEADERS = ['Name', 'Studio', 'Email', 'What they teach', 'Agreed to emails', 'Agreed at', 'Created', 'Updated'];
 var PROGRAMS = ['Gymnastics', 'Dance', 'Swim', 'Cheer', 'Martial arts', 'Something else'];
 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Who gets an email for each signup. Leave empty to turn the alert off.
+var ALERT_TO = 'caseywfrancis@gmail.com';
 
 function doPost(e) {
   var data;
@@ -35,16 +37,20 @@ function doPost(e) {
     return reply_({ ok: false, error: 'invalid' });
   }
 
+  var isNew = true;
+  var sheetUrl = '';
   var lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
     var sheet = sheet_();
+    sheetUrl = sheet.getParent().getUrl();
     var now = new Date();
     var last = sheet.getLastRow();
     var emails = last > 1 ? sheet.getRange(2, 3, last - 1, 1).getValues().map(function (r) { return String(r[0]).toLowerCase(); }) : [];
     var i = emails.indexOf(email);
     if (i >= 0) {
       // Same email again: update the existing row instead of adding a second one.
+      isNew = false;
       var row = i + 2;
       sheet.getRange(row, 1, 1, 2).setValues([[name, studio]]);
       sheet.getRange(row, 4, 1, 3).setValues([[program, 'Yes', now]]);
@@ -55,7 +61,30 @@ function doPost(e) {
   } finally {
     lock.releaseLock();
   }
+  alert_(isNew, name, studio, email, program, sheetUrl);
   return reply_({ ok: true });
+}
+
+// Email the owner about the signup. A failed email never fails the signup itself.
+function alert_(isNew, name, studio, email, program, sheetUrl) {
+  if (!ALERT_TO) return;
+  try {
+    var subject = (isNew ? 'New Kipwell signup: ' : 'Kipwell signup updated: ') + studio;
+    var body = [
+      isNew ? 'Someone joined the Kipwell early-access list.' : 'Someone already on the list signed up again; their row was updated.',
+      '',
+      'Name: ' + name,
+      'Studio: ' + studio,
+      'Email: ' + email,
+      'What they teach: ' + program,
+      '',
+      'Reply to this email to write back to them.',
+      'All signups: ' + sheetUrl
+    ].join('\n');
+    MailApp.sendEmail({ to: ALERT_TO, subject: subject, body: body, replyTo: email, name: 'Kipwell signups' });
+  } catch (err) {
+    console.error('Signup alert failed: ' + err);
+  }
 }
 
 // A plain GET (someone opening the URL) shows nothing useful.
