@@ -19,7 +19,7 @@ The product itself is a separate app (the Base44 prototype, later app.kipwell.co
 | `backend/signups.gs` | Google Apps Script that saves signups to a Google Sheet. Not used by the site directly; paste it into Apps Script. |
 | `.nojekyll` | Tells GitHub Pages to serve files as they are |
 
-Links between pages are relative, so the site works both at `caseyfrancis.github.io/kipwell-site/` and at `kipwell.co`. The 404 page is the exception: it only looks right on kipwell.co.
+Links between pages are relative, so the site works both at `kipwell-app.github.io/kipwell-site/` and at `kipwell.co`. The 404 page is the exception: it only looks right on kipwell.co.
 
 ## Editing
 
@@ -47,14 +47,14 @@ Until step 5 is done, the form shows "We couldn't save that. Check your connecti
 
 kipwell.co is registered at Porkbun. GitHub's docs say to verify the domain and add it in GitHub before pointing DNS at it, so nobody else can claim it.
 
-1. Verify the domain: github.com > your profile picture > Settings > Pages > Add a domain > `kipwell.co`. GitHub shows a TXT record; add it at Porkbun (DNS for kipwell.co), then click Verify.
+1. Verify the domain: github.com > the Kipwell-App organization > Settings > Pages > Add a domain > `kipwell.co`. GitHub shows a TXT record; add it at Porkbun (DNS for kipwell.co), then click Verify.
 2. In this repo: Settings > Pages > Custom domain > `kipwell.co` > Save. (This adds a `CNAME` file to the repo.)
 3. At Porkbun, for kipwell.co, delete any existing A, AAAA or ALIAS records on the bare domain (Porkbun's parking page), then add:
    - A records, host blank: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - AAAA records, host blank: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-   - CNAME, host `www`, answer `caseyfrancis.github.io`
+   - CNAME, host `www`, answer `kipwell-app.github.io`
    - Don't add a wildcard (`*`) record.
 4. Wait for the DNS check in Settings > Pages to pass (minutes to a few hours), then tick "Enforce HTTPS".
 5. Leave the `notify`, `hello` and future `app` records alone. They're separate subdomains and don't affect the site.
 
-This repo is public, as GitHub Pages requires on a free account. Keep anything private out of it: the signups live in the Google Sheet, never here.
+This repo is public, as GitHub Pages requires on a free organization. Keep anything private out of it: the signups live in the Google Sheet, never here.
