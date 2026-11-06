@@ -79,10 +79,10 @@ function alert_(isNew, name, studio, email, program, sheetUrl) {
       'Email: ' + email,
       'What they teach: ' + program,
       '',
-      'Reply to this email to write back to them.',
-      'All signups: ' + sheetUrl
+      'To write to them, click their email address above.',
+      ''
     ].join('\n');
-    MailApp.sendEmail({ to: ALERT_TO, subject: subject, body: body, replyTo: email, name: 'Kipwell signups' });
+    MailApp.sendEmail({ to: ALERT_TO, subject: subject, body: body, name: 'Kipwell signups' });
   } catch (err) {
     console.error('Signup alert failed: ' + err);
   }

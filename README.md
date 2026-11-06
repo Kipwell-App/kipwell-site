@@ -39,7 +39,7 @@ One-time setup, about 10 minutes:
 5. In `assets/js/config.js`, put the URL between the quotes: `window.KIPWELL_SIGNUP_URL = "https://script.google.com/macros/s/.../exec";` and commit.
 6. On the live site, join with kipwell.test@gmail.com. A "Signups" tab appears in the sheet with one row. Join again with the same email in capitals: still one row, with a new Updated time.
 
-Each signup also emails an alert to the address in `ALERT_TO` at the top of `signups.gs` (Reply goes straight to the person who signed up). Set it to `''` to turn alerts off.
+Each signup also emails an alert to the address in `ALERT_TO` at the top of `signups.gs` (click their email address in the alert to write to them; the alert has no link to the sheet, so nothing internal gets quoted). Set it to `''` to turn alerts off.
 
 The first time the script sends email, Google asks for permission to "Send email as you". If alerts stop arriving, open Apps Script, run any function from the editor and allow it, then publish a new version.
 
