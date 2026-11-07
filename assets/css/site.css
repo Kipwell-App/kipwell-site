@@ -259,11 +259,13 @@ h1, h2, h3 { margin: 0; }
   .flow-nav { display: flex; justify-content: center; margin-top: 20px; }
   .flow-next { height: 44px; padding: 0 18px; border: 1.5px solid var(--spruce); border-radius: 10px; background: transparent; color: var(--spruce); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
   .flow-next:hover { background: var(--spruce-tint); }
-  /* Back-office cards: a sideways swipe row on narrow screens instead of six stacked cards */
-  .grid-3.rest-scroll { display: flex; gap: 12px; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 4px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .rest-scroll::-webkit-scrollbar { display: none; }
-  .rest-scroll:focus-visible { outline-offset: -2px; }
-  .rest-scroll > .card { flex: 0 0 min(76vw, 300px); scroll-snap-align: start; }
+  /* Back-office cards: a compact checklist on narrow screens instead of six stacked cards */
+  .grid-3.rest-list { gap: 0; }
+  .rest-list > .card { background: none; box-shadow: none; border-radius: 0; padding: 16px 0 16px 34px; gap: 4px; border-top: 1px solid var(--line); position: relative; }
+  .rest-list > .card:last-child { border-bottom: 1px solid var(--line); }
+  .rest-list > .card::before { content: ""; position: absolute; left: 0; top: 18px; width: 20px; height: 20px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23183A30' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center / contain; }
+  .rest-list .card-title-sans { font-size: 18px; }
+  .rest-list > .card p { font-size: 15px; }
   .founder { gap: 20px; }
   .panel-plum { padding: 40px 32px; }
 }
