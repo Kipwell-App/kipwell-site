@@ -50,6 +50,7 @@ h1, h2, h3 { margin: 0; }
 .h2 { font-family: var(--serif); font-weight: 800; font-size: 48px; line-height: 1.06; letter-spacing: -0.02em; color: var(--spruce); }
 .dark .h2, .panel-plum .h2 { color: var(--on-dark); }
 .soft { font-family: var(--serif); font-style: italic; font-weight: 600; }
+.break { display: block; }
 .lede { font-size: 19px; line-height: 1.55; }
 .muted { color: var(--stone); }
 
