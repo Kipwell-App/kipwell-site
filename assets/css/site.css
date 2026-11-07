@@ -221,7 +221,11 @@ h1, h2, h3 { margin: 0; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; align-items: center; }
 .footer-nav a { color: var(--on-dark-2); text-decoration: none; padding: 6px 0; }
 .footer-nav a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
-.footer-note { padding-top: 24px; border-top: 1px solid #2E4A40; font-size: 13px; line-height: 1.55; color: #B9C8BF; }
+/* Bottom row: the privacy link sits with the fine print, apart from the section links */
+.footer-bottom { display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: baseline; gap: 12px 32px; padding-top: 24px; border-top: 1px solid #2E4A40; }
+.footer-bottom a { flex: none; font-size: 15px; color: var(--on-dark-2); text-decoration: none; }
+.footer-bottom a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
+.footer-note { margin: 0; max-width: 760px; font-size: 13px; line-height: 1.55; color: #B9C8BF; }
 .site-footer :focus-visible { outline-color: var(--on-dark); }
 
 /* Privacy */
@@ -281,6 +285,8 @@ h1, h2, h3 { margin: 0; }
   .panel-plum { padding: 40px 32px; }
 }
 @media (max-width: 720px) {
+  .footer-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 16px; width: 100%; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
   html { scroll-padding-top: 64px; }
   .site-header .wrap { height: 64px; }
   :root { --gutter: 20px; }
