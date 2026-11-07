@@ -22,11 +22,11 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/Besley.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/HankenGrotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=10">
+<link rel="stylesheet" href="assets/css/site.css?v=11">
 <script>document.documentElement.classList.add('js');</script>
-<script src="assets/js/config.js?v=10" defer></script>
-<script src="assets/js/analytics.js?v=10" defer></script>
-<script src="assets/js/site.js?v=10" defer></script>
+<script src="assets/js/config.js?v=11" defer></script>
+<script src="assets/js/analytics.js?v=11" defer></script>
+<script src="assets/js/site.js?v=11" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -110,21 +110,29 @@
       <h2 class="h2" id="reg-title">Families register in one sitting.</h2>
       <p class="lede">Your live schedule, sign-up, waiver and payment in one flow. Families see real spots left, so you can stop answering “is there room?”</p>
     </div>
-    <div class="phones-scroll reveal" tabindex="0" role="region" aria-label="Three phone screens">
-    <ul class="phones">
-      <li><figure>
+    <div class="flow reveal">
+    <ol class="flow-steps" aria-label="Registration steps">
+      <li class="is-current"><button type="button" data-step="0" aria-current="step"><span class="flow-num">1</span><span class="flow-label">Find a class</span></button></li>
+      <li><button type="button" data-step="1"><span class="flow-num">2</span><span class="flow-label">Register and sign</span></button></li>
+      <li><button type="button" data-step="2"><span class="flow-num">3</span><span class="flow-label">Family home</span></button></li>
+    </ol>
+    <div class="phones-scroll" tabindex="0" role="region" aria-label="Three phone screens, one per step">
+    <ol class="phones">
+      <li class="is-current"><figure>
+        <figcaption><span class="flow-num" aria-hidden="true">1</span><span class="step-text"><b>Find a class.</b> The schedule on your site stays current on its own.</span></figcaption>
         <img src="assets/img/phone-find-a-class.webp" width="390" height="844" loading="lazy" alt="Phone screen: Fall 2026 classes for ages 6 to 8, each with day, time, price and spots left">
-        <figcaption><b>Find a class.</b> The schedule on your site stays current on its own.</figcaption>
       </figure></li>
       <li><figure>
+        <figcaption><span class="flow-num" aria-hidden="true">2</span><span class="step-text"><b>Register and sign.</b> Family account, athlete and e-waiver in one form.</span></figcaption>
         <img src="assets/img/phone-register.webp" width="390" height="844" loading="lazy" alt="Phone screen: athlete details and the gym’s participation waiver, signed by typing a name">
-        <figcaption><b>Register and sign.</b> Family account, athlete and e-waiver in one form.</figcaption>
       </figure></li>
       <li><figure>
+        <figcaption><span class="flow-num" aria-hidden="true">3</span><span class="step-text"><b>The family’s home.</b> Next class, what’s due and what’s signed.</span></figcaption>
         <img src="assets/img/phone-family-home.webp" width="390" height="844" loading="lazy" alt="Phone screen: the family’s home with the next class, autopay schedule, signed waiver and athlete">
-        <figcaption><b>The family’s home.</b> Next class, what’s due and what’s signed.</figcaption>
       </figure></li>
-    </ul>
+    </ol>
+    </div>
+    <div class="flow-nav"><button type="button" class="flow-next">Next: Register and sign <span aria-hidden="true">→</span></button></div>
     </div>
     <p class="note">no app download needed</p>
   </div>

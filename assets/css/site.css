@@ -121,6 +121,13 @@ h1, h2, h3 { margin: 0; }
 .phones img { border-radius: 28px; border: 8px solid var(--ink); }
 .phones figcaption { font-size: 16px; line-height: 1.45; }
 .phones b { font-weight: 700; color: var(--spruce); }
+/* Registration flow: numbered steps joined by a line, so the three screens read as one process */
+.phones li { position: relative; }
+.phones figcaption { display: flex; flex-direction: column; gap: 10px; }
+.flow-num { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--spruce); color: var(--on-dark); font-size: 15px; font-weight: 700; line-height: 1; }
+.phones > li:not(:last-child)::after { content: ""; position: absolute; top: 13px; left: 40px; right: -28px; height: 2px; background: var(--spruce); opacity: 0.35; }
+.flow-steps, .flow-nav { display: none; }
+.flow-steps button:focus-visible, .flow-next:focus-visible { outline: 2px solid var(--spruce); outline-offset: 4px; }
 .note { margin-top: -16px; text-align: center; font-family: "Caveat", cursive; font-weight: 600; font-size: 28px; line-height: 1.2; color: var(--plum); }
 
 /* Billing */
@@ -226,12 +233,27 @@ h1, h2, h3 { margin: 0; }
   .split-head { gap: 16px; }
   .skills-text { order: -1; }
   /* Phones: a sideways swipe row with the next screen peeking in, instead of a tall stack */
-  .phones-scroll { margin: 0 calc(-1 * var(--gutter)); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  /* Phones: one screen at a time, stepped through with the numbered steps or the Next button (or a swipe) */
+  .phones-scroll { --pw: min(70vw, 280px); position: relative; margin: 0 calc(-1 * var(--gutter)); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .phones-scroll::-webkit-scrollbar { display: none; }
   .phones-scroll:focus-visible { outline-offset: -2px; }
-  .phones { display: flex; gap: 16px; justify-content: flex-start; padding: 0 var(--gutter) 4px; width: max-content; }
-  .phones li { flex: 0 0 auto; width: min(70vw, 280px); scroll-snap-align: start; }
+  .phones { display: flex; gap: 16px; justify-content: flex-start; padding: 0 calc((100vw - var(--pw)) / 2) 4px; width: max-content; }
+  .phones li { flex: 0 0 auto; width: var(--pw); scroll-snap-align: center; }
+  .phones > li::after, .phones .flow-num { display: none; }
+  .phones figcaption b { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .phones figcaption { min-height: 46px; text-align: center; }
+  .phones > li:not(.is-current) figcaption { visibility: hidden; }
   .phones img { border-width: 6px; border-radius: 24px; }
+  .flow-steps { display: flex; margin: 0 auto 20px; padding: 0; list-style: none; max-width: 420px; }
+  .flow-steps li { flex: 1; position: relative; display: flex; justify-content: center; }
+  .flow-steps li:not(:last-child)::after { content: ""; position: absolute; top: 13px; left: calc(50% + 20px); right: calc(-50% + 20px); height: 2px; background: var(--line); transition: background-color 180ms; }
+  .flow-steps li.is-done::after { background: var(--spruce); }
+  .flow-steps button { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 0 4px; min-height: 44px; background: none; border: 0; font: inherit; font-size: 14px; font-weight: 600; line-height: 1.2; color: var(--stone); text-align: center; cursor: pointer; }
+  .flow-steps li:not(.is-done):not(.is-current) .flow-num { background: var(--card); color: var(--stone); box-shadow: inset 0 0 0 2px #CDBB94; }
+  .flow-steps li.is-current button { color: var(--spruce); }
+  .flow-nav { display: flex; justify-content: center; margin-top: 20px; }
+  .flow-next { height: 44px; padding: 0 18px; border: 1.5px solid var(--spruce); border-radius: 10px; background: transparent; color: var(--spruce); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .flow-next:hover { background: var(--spruce-tint); }
   .founder { gap: 20px; }
   .panel-plum { padding: 40px 32px; }
 }

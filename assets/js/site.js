@@ -15,6 +15,52 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  // Registration flow: on narrow screens, step through the three phones one at a time.
+  var scroller = document.querySelector(".phones-scroll");
+  var stepItems = document.querySelectorAll(".flow-steps li");
+  var nextBtn = document.querySelector(".flow-next");
+  if (scroller && stepItems.length && nextBtn) {
+    var screens = scroller.querySelectorAll(".phones > li");
+    var labels = ["Find a class", "Register and sign", "Family home"];
+    var current = 0;
+    var setStep = function (i) {
+      current = i;
+      stepItems.forEach(function (li, j) {
+        li.classList.toggle("is-done", j < i);
+        li.classList.toggle("is-current", j === i);
+        var b = li.querySelector("button");
+        if (j === i) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
+      });
+      screens.forEach(function (li, j) { li.classList.toggle("is-current", j === i); });
+      nextBtn.innerHTML = i < screens.length - 1
+        ? "Next: " + labels[i + 1] + ' <span aria-hidden="true">→</span>'
+        : '<span aria-hidden="true">←</span> Back to step 1';
+    };
+    var goTo = function (i) {
+      var li = screens[i];
+      scroller.scrollTo({ left: li.offsetLeft - (scroller.clientWidth - li.offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" });
+      setStep(i);
+    };
+    var ticking = false;
+    scroller.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var mid = scroller.scrollLeft + scroller.clientWidth / 2, best = 0, bestD = Infinity;
+        screens.forEach(function (li, j) {
+          var d = Math.abs(li.offsetLeft + li.offsetWidth / 2 - mid);
+          if (d < bestD) { bestD = d; best = j; }
+        });
+        if (best !== current) setStep(best);
+      });
+    }, { passive: true });
+    stepItems.forEach(function (li, j) {
+      li.querySelector("button").addEventListener("click", function () { goTo(j); });
+    });
+    nextBtn.addEventListener("click", function () { goTo(current < screens.length - 1 ? current + 1 : 0); });
+  }
+
   // Join form
   var form = document.getElementById("join-form");
   if (!form) return;
