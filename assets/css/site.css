@@ -225,7 +225,7 @@ h1, h2, h3 { margin: 0; }
 .footer-bottom { display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: baseline; gap: 12px 32px; padding-top: 24px; border-top: 1px solid #2E4A40; }
 .footer-bottom a { flex: none; font-size: 15px; color: var(--on-dark-2); text-decoration: none; }
 .footer-bottom a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
-.footer-note { margin: 0; max-width: 760px; font-size: 13px; line-height: 1.55; color: #B9C8BF; }
+.footer-note { margin: 0; font-size: 14px; line-height: 1.55; color: #B9C8BF; }
 .site-footer :focus-visible { outline-color: var(--on-dark); }
 
 /* Privacy */
@@ -285,8 +285,7 @@ h1, h2, h3 { margin: 0; }
   .panel-plum { padding: 40px 32px; }
 }
 @media (max-width: 720px) {
-  .footer-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 16px; width: 100%; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-nav { display: grid; grid-template-columns: repeat(3, max-content); gap: 2px 32px; }
   html { scroll-padding-top: 64px; }
   .site-header .wrap { height: 64px; }
   :root { --gutter: 20px; }
