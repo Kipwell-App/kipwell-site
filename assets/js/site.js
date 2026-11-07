@@ -15,6 +15,14 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  // Header: add a soft edge once the page scrolls under it.
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var onScroll = function () { header.classList.toggle("is-scrolled", window.scrollY > 8); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
   // Registration flow: on narrow screens, step through the three phones one at a time.
   var scroller = document.querySelector(".phones-scroll");
   var stepItems = document.querySelectorAll(".flow-steps li");
