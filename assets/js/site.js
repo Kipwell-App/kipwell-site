@@ -21,7 +21,7 @@
 
   var fields = {
     name: { input: form.elements.name, error: document.getElementById("e-name"), message: "Enter your name." },
-    studio: { input: form.elements.studio, error: document.getElementById("e-studio"), message: "Enter your studio’s name." },
+    studio: { input: form.elements.studio, error: document.getElementById("e-studio"), message: "Enter your gym’s name." },
     email: { input: form.elements.email, error: document.getElementById("e-email"), message: "Enter an email we can reach you at." },
     consent: { input: form.elements.consent, error: document.getElementById("e-consent"), message: "Check the box so we can email you." }
   };
@@ -99,7 +99,7 @@
   function fail() {
     saving = false;
     submit.disabled = false;
-    submit.textContent = "Join the first studios";
+    submit.textContent = "Join the first gyms";
     status.textContent = "We couldn’t save that. Check your connection and try again.";
   }
 
