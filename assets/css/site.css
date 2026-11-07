@@ -193,10 +193,8 @@ h1, h2, h3 { margin: 0; }
 .footer-brand .brand svg { width: 28px; height: 28px; }
 .footer-brand .wordmark { font-size: 24px; }
 .footer-brand span { font-size: 15px; color: var(--on-dark-2); }
-.footer-nav { display: flex; gap: 48px; font-size: 15px; }
-.footer-nav div { display: flex; flex-direction: column; gap: 8px; }
-.footer-nav b { font-weight: 600; }
-.footer-nav a { color: var(--on-dark-2); text-decoration: none; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; align-items: center; }
+.footer-nav a { color: var(--on-dark-2); text-decoration: none; padding: 6px 0; }
 .footer-nav a:hover { color: var(--on-dark); text-decoration: underline; text-underline-offset: 3px; }
 .footer-note { padding-top: 24px; border-top: 1px solid #2E4A40; font-size: 13px; line-height: 1.55; color: #B9C8BF; }
 .site-footer :focus-visible { outline-color: var(--on-dark); }
@@ -239,6 +237,7 @@ h1, h2, h3 { margin: 0; }
   :root { --gutter: 20px; }
   .nav { display: none; }
   .h1 { font-size: 44px; }
+  .break-sm { display: block; }
   .h2, .panel-plum .h2, .founder .h2 { font-size: 34px; }
   .doc h1 { font-size: 40px; }
   .panel-plum { padding: 32px 24px; }
