@@ -259,6 +259,11 @@ h1, h2, h3 { margin: 0; }
   .flow-nav { display: flex; justify-content: center; margin-top: 20px; }
   .flow-next { height: 44px; padding: 0 18px; border: 1.5px solid var(--spruce); border-radius: 10px; background: transparent; color: var(--spruce); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
   .flow-next:hover { background: var(--spruce-tint); }
+  /* Back-office cards: a sideways swipe row on narrow screens instead of six stacked cards */
+  .grid-3.rest-scroll { display: flex; gap: 12px; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 4px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .rest-scroll::-webkit-scrollbar { display: none; }
+  .rest-scroll:focus-visible { outline-offset: -2px; }
+  .rest-scroll > .card { flex: 0 0 min(76vw, 300px); scroll-snap-align: start; }
   .founder { gap: 20px; }
   .panel-plum { padding: 40px 32px; }
 }
