@@ -123,9 +123,10 @@ h1, h2, h3 { margin: 0; }
 .phones b { font-weight: 700; color: var(--spruce); }
 /* Registration flow: numbered steps joined by a line, so the three screens read as one process */
 .phones li { position: relative; }
-.phones figcaption { display: flex; flex-direction: column; gap: 10px; }
+.phones figcaption { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
 .flow-num { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--spruce); color: var(--on-dark); font-size: 15px; font-weight: 700; line-height: 1; }
-.phones > li:not(:last-child)::after { content: ""; position: absolute; top: 13px; left: 40px; right: -28px; height: 2px; background: var(--spruce); opacity: 0.35; }
+/* Joins each step number to the next one, centered over the phones (the gap between phones is 40px) */
+.phones > li:not(:last-child)::after { content: ""; position: absolute; top: 13px; left: calc(50% + 22px); right: calc(-50% - 18px); height: 2px; background: var(--spruce); opacity: 0.35; }
 .flow-steps, .flow-nav { display: none; }
 .flow-steps button:focus-visible, .flow-next:focus-visible { outline: 2px solid var(--spruce); outline-offset: 4px; }
 .note { margin-top: -16px; text-align: center; font-family: "Caveat", cursive; font-weight: 600; font-size: 28px; line-height: 1.2; color: var(--plum); }
