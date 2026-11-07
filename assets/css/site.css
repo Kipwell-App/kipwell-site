@@ -55,8 +55,9 @@ h1, h2, h3 { margin: 0; }
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 52px; padding: 0 24px; border-radius: 10px; font: inherit; font-size: 17px; font-weight: 600; text-decoration: none; cursor: pointer; border: 0; transition: background-color 180ms cubic-bezier(.2,.7,.2,1), color 180ms; }
-.btn-marigold { background: var(--marigold); color: var(--ink); font-weight: 700; }
-.btn-marigold:hover { background: #D99512; color: var(--ink); }
+/* Marigold appears once per layout: in the hero it's the underline, so the main button is cream. */
+.btn-cream { background: var(--on-dark); color: var(--spruce); font-weight: 700; }
+.btn-cream:hover { background: #FFFFFF; color: var(--spruce); }
 .btn-outline { border: 1.5px solid var(--on-dark); color: var(--on-dark); background: transparent; }
 .btn-outline:hover { background: rgba(251, 244, 228, 0.12); color: var(--on-dark); }
 .btn-small { height: 44px; padding: 0 18px; font-size: 15px; }
@@ -80,7 +81,7 @@ h1, h2, h3 { margin: 0; }
 .eyebrow { font-size: 16px; font-weight: 500; color: var(--on-dark-2); }
 .h1 { font-family: var(--serif); font-weight: 800; font-size: 68px; line-height: 1.02; letter-spacing: -0.025em; }
 .underlined { position: relative; display: inline-block; }
-.underlined svg { position: absolute; left: 0; bottom: -18px; width: 100%; height: 22px; color: var(--on-dark); }
+.underlined svg { position: absolute; left: 0; bottom: -18px; width: 100%; height: 22px; color: var(--marigold); }
 .hero .lede { font-size: 20px; line-height: 1.5; color: var(--on-dark-2); max-width: 500px; margin-top: 8px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .fine { font-size: 15px; color: var(--on-dark-2); }
