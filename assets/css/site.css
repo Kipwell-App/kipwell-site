@@ -70,6 +70,14 @@ h1, h2, h3 { margin: 0; }
 /* Header stays at the top while scrolling; a faint line shows once the page has moved under it */
 .site-header { position: sticky; top: 0; z-index: 20; transition: box-shadow 180ms; }
 .site-header.is-scrolled { box-shadow: 0 1px 0 rgba(251, 244, 228, 0.14), 0 6px 18px rgba(16, 40, 31, 0.18); }
+/* Light header: once the hero has scrolled past, the bar turns paper with the dark logo and a solid button */
+.site-header { transition: background-color 200ms, color 200ms, box-shadow 200ms; }
+.site-header.is-light { background: var(--paper); color: var(--ink); box-shadow: 0 1px 0 var(--line), 0 6px 18px rgba(26, 42, 36, 0.06); }
+.site-header.is-light .brand, .site-header.is-light .brand:hover { color: var(--spruce); }
+.site-header.is-light .brand rect:not(:last-child) { fill: var(--spruce); }
+.site-header.is-light .nav a { color: var(--ink); }
+.site-header.is-light .btn-outline { background: var(--spruce); border-color: var(--spruce); color: var(--on-dark); }
+.site-header.is-light .btn-outline:hover { background: var(--spruce-700); }
 .site-header .wrap { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--on-dark); text-decoration: none; }
 .brand:hover { color: var(--on-dark); }

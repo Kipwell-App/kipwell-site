@@ -18,7 +18,12 @@
   // Header: add a soft edge once the page scrolls under it.
   var header = document.querySelector(".site-header");
   if (header) {
-    var onScroll = function () { header.classList.toggle("is-scrolled", window.scrollY > 8); };
+    var hero = document.querySelector(".hero");
+    var onScroll = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+      // Turn light once the hero's bottom edge has passed under the header.
+      if (hero) header.classList.toggle("is-light", hero.getBoundingClientRect().bottom <= header.offsetHeight);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
   }
