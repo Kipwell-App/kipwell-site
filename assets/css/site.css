@@ -130,6 +130,18 @@ h1, h2, h3 { margin: 0; }
 .flow-steps, .flow-nav { display: none; }
 .flow-steps button:focus-visible, .flow-next:focus-visible { outline: 2px solid var(--spruce); outline-offset: 4px; }
 .note { margin-top: -16px; text-align: center; font-family: "Caveat", cursive; font-weight: 600; font-size: 28px; line-height: 1.2; color: var(--plum); }
+/* "no app download needed": a margin note that points at the steps (above them on narrow screens, beside step 3 on wide ones) */
+.flow { position: relative; }
+.app-note { margin: 0 0 16px; display: flex; align-items: flex-end; justify-content: center; gap: 4px; }
+.note-arrow { width: 34px; height: 34px; flex: none; transform: translateY(14px) scaleX(-1) rotate(-20deg); }
+@media (min-width: 901px) and (max-width: 1179px) {
+  /* Phones side by side: line the arrow up over step 3 */
+  .app-note { justify-content: flex-end; padding-right: calc(max(50% - 340px, (100% - 80px) / 6) - 8px); }
+}
+@media (min-width: 1180px) {
+  .app-note { position: absolute; margin: 0; padding-left: 26px; left: calc(50% + 362px); right: 0; bottom: calc(100% + 22px); display: block; text-align: left; transform: rotate(-3deg); transform-origin: left bottom; }
+  .note-arrow { position: absolute; left: -16px; bottom: -26px; width: 42px; height: 42px; transform: none; }
+}
 
 /* Billing */
 .list-panel { margin: 0; padding: 8px 32px; list-style: none; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); border-radius: 16px; }
